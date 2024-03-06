@@ -1,0 +1,14 @@
+.wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.link {
+	margin-right: 1rem;
+	color: #fff;
+	transition: all 0.3s ease-in-out;
+}
+.link:hover {
+	margin-right: 1rem;
+	color: #ff10efa5;
+}

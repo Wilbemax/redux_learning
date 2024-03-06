@@ -1,0 +1,27 @@
+.box {
+	width: 500px;
+	margin: 0.3rem 0;
+	padding: 0.4rem 0.5rem;
+	color: #000;
+	transition: all 0.3s ease-in-out;
+	border-radius: 10px;
+	display: block;
+}
+.box:hover {
+	background: #bfbfbf6f;
+}
+.dopInf {
+	margin: 0.3rem 0;
+	font-size: 20px;
+	display: flex;
+}
+.inf {
+	margin-right: 0.5rem;
+}
+.title {
+	font-size: 22px;
+	font-weight: 500;
+}
+.des {
+	color: rgb(59, 59, 59);
+}
