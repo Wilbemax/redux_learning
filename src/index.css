@@ -86,3 +86,6 @@ h6 {
 	width: 90%;
 	max-width: 1850px;
 }
+.vh {
+	min-height: 80vh;
+}
