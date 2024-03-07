@@ -11,3 +11,4 @@ const actions = {
 export const useAction = () => {
     const dispatch = useDispatch()
     return bindActionCreators(actions, dispatch)
+}

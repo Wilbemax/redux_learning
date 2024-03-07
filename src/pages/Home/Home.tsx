@@ -8,16 +8,23 @@ import classes from './Home.module.css'
 import Repozi from "../../Components/Repozi/Repozi"
 
 export default function Home() {
-    const [search, setSearch] = useState('wilbemax')
+    const [search, setSearch] = useState('')
     const [dropDoun, setDropDoun] = useState(false)
+
     const debouncedSearch = useDebouncedSearch(search)
+    console.log(debouncedSearch);
+
     const { isLoading, isError, data } = useSearchUsersQuery(debouncedSearch, {
         skip: debouncedSearch.length <= 2,
         refetchOnFocus: true
     })
 
-    console.log(debouncedSearch);
-    console.log(search);
+    const [helpText, setHelpText] = useState('')
+
+    if(isError){
+        setHelpText('Something went wrong... Please try later.')
+    }
+
 
     useEffect(() => {
         setDropDoun(debouncedSearch.length >= 2 && data?.length! > 0)
@@ -29,14 +36,15 @@ export default function Home() {
         fetchResponse(username)
         setDropDoun(!dropDoun)
     }
+    console.log(data);
 
     return (
         <div className="container">
             <div className={classes.main}>
-                {isError && <p>Somethig went wrong</p>}
+                
 
 
-                <TextField sx={{ width: '100%', maxWidth: 500 }} fullWidth type="text" label="Search for Github username..." value={search} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} />
+                <TextField sx={{ width: '100%', maxWidth: 500 }} error={isError} fullWidth helperText={helpText} type="text" label="Search for Github username..." value={search} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} />
                 {dropDoun && <Box
                     sx={{ width: '100%', maxHeight: 200, maxWidth: 500, bgcolor: 'background.paper', overflowY: 'scroll', }}>
                     <div>
