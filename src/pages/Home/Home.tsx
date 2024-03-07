@@ -8,7 +8,7 @@ import classes from './Home.module.css'
 import Repozi from "../../Components/Repozi/Repozi"
 
 export default function Home() {
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState('wilbemax')
     const [dropDoun, setDropDoun] = useState(false)
     const debouncedSearch = useDebouncedSearch(search)
     const { isLoading, isError, data } = useSearchUsersQuery(debouncedSearch, {
@@ -52,7 +52,7 @@ export default function Home() {
                         ))}
                     </div>
                 </Box>}
-                {areRepoLoading && <p className={classes.title}>Repositories are loading...</p> }
+                {areRepoLoading && <p className={classes.title}>Repositories are loading...</p>}
                 {repos && <p className={classes.title}>All repositories</p>}
                 {repos?.map(repo => <Repozi repo={repo} key={repo.id} />)}
             </div>

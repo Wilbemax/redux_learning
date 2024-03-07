@@ -6,6 +6,8 @@
 	transition: all 0.3s ease-in-out;
 	border-radius: 10px;
 	display: block;
+	display: flex;
+	justify-content: space-between;
 }
 .box:hover {
 	background: #bfbfbf6f;
@@ -24,4 +26,7 @@
 }
 .des {
 	color: rgb(59, 59, 59);
+}
+.link {
+	color: #000;
 }
