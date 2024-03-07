@@ -9,7 +9,7 @@ import Repozi from "../../Components/Repozi/Repozi"
 
 export default function Home() {
     const [search, setSearch] = useState('')
-    const [dropDoun, setDropDoun] = useState(false)
+    const [dropDown, setDropDown] = useState(false)
 
     const debouncedSearch = useDebouncedSearch(search)
     console.log(debouncedSearch);
@@ -27,14 +27,14 @@ export default function Home() {
 
 
     useEffect(() => {
-        setDropDoun(debouncedSearch.length >= 2 && data?.length! > 0)
-    }, [debouncedSearch, data])
-
+        setDropDown(!!(debouncedSearch.length >= 2 && data && data.length > 0));
+    }, [debouncedSearch, data]);
+    
     const [fetchResponse, { isLoading: areRepoLoading, data: repos }] = useLazyGetUserRepoQuery()
 
     const handlClick = (username: string) => {
         fetchResponse(username)
-        setDropDoun(!dropDoun)
+        setDropDown(!dropDown)
     }
     console.log(data);
 
@@ -45,7 +45,7 @@ export default function Home() {
 
 
                 <TextField sx={{ width: '100%', maxWidth: 500 }} error={isError} fullWidth helperText={helpText} type="text" label="Search for Github username..." value={search} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)} />
-                {dropDoun && <Box
+                {dropDown && <Box
                     sx={{ width: '100%', maxHeight: 200, maxWidth: 500, bgcolor: 'background.paper', overflowY: 'scroll', }}>
                     <div>
                         {data?.map((user: IUser) => (

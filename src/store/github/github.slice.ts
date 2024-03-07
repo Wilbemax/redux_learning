@@ -3,9 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 const LS_KEY = "rfa"
 
 
-interface GithubState{
-    favorites : string[]
-}
+
 
 const initialState = {
     favorites: JSON.parse(localStorage.getItem(LS_KEY) ?? "[]")
@@ -20,7 +18,7 @@ export const githubSlice = createSlice({
             localStorage.setItem(LS_KEY, JSON.stringify(state.favorites))
         },
         removeFavorites: (state, action: PayloadAction<string>) =>{
-            state.favorites = state.favorites.filter(f => f !== action.payload)
+            state.favorites = state.favorites.filter((f:string) => f !== action.payload)
             localStorage.setItem(LS_KEY, JSON.stringify(state.favorites))
         }
     }
